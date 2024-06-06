@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+<!--標題-->
+<header class="main-header">
+    <div class="container">
+        <a href="./index.html" class="logo">
+            <img src="./image/image.png" alt="tku">
+        </a>
+        <nav class="main-nav">
+            <a href="page1/page1.html">未來走向</a>
+            <a href="page2/page2.html">榮耀時光</a>
+            <a href="page3/page3.html">史黑測試機</a>
+            <a href="page4/page4.html">摸摸史丹利</a>
+        </nav>
+    </div>
+</header>
+
+<!--內容-->
+
+<div class="content">
+    <div class="main-photo-container">
+        <img id="main-photo" src="./image/stanley.png" alt="Stanley">
+    </div>
+    <div class="card" id="card">
+        <h1 id="card-title">上路- Stanley</h1>
+        <p id="card-content">人稱上路帝王的史丹利，對線能力非常優秀，對於裝備的理解超乎常人，時常開發出讓人無解的打法。以前曾開發過弗拉迪米爾出四個海克斯科技左輪，也讓Riot Games改動道具的效果。在TPA奪冠後的隔年離開隊伍，轉往HKA。</p>
+    </div>
+</div>
+
+<div style="border-bottom: solid rgb(194, 4, 4) 5px;"></div>
+<div style="border-bottom: dashed rgb(224, 58, 16) 5px;"></div>
+<div style="border-bottom: solid rgb(194, 4, 4) 5px;"></div>
+<div class="thumbnail-container">
+  
+    <img class="thumbnail" src="./image/stanley.png" onclick="ChangeIndex(0)">
+    <img class="thumbnail" src="./image/Lilballz.png" onclick="ChangeIndex(1)">
+    <img class="thumbnail" src="./image/toyz.png" onclick="ChangeIndex(2)">
+    <img class="thumbnail" src="./image/bebe.png" onclick="ChangeIndex(3)">
+    <img class="thumbnail" src="./image/MiSTakE.png" onclick="ChangeIndex(4)">
+</div>
+
+<!--內容-->
+
+<div class="down">conpyright &copy; 台北暗殺對TPA</div>
+
+<script>
+  const photos = [
+    {
+        src: './image/stanley.png',
+        title: '上路- Stanley',
+        content: '人稱上路帝王的史丹利，對線能力非常優秀，對於裝備的理解超乎常人，時常開發出讓人無解的打法。以前曾開發過弗拉迪米爾出四個海克斯科技左輪，也讓Riot Games改動道具的效果。在TPA奪冠後的隔年離開隊伍，轉往HKA。'
+    },
+    {
+        src: './image/Lilballz.png',
+        title: '打野-Lilballz',
+        content: '原為CLG戰隊選手，與選手Bigfatjiji是好基友。一人取大GG，一人叫小球球。在來台灣之前是美服的高手，英雄聯盟 Beta時曾站上單人排行第二，因此回台後被Mistake火速招攬。'
+    },
+    {
+        src: './image/toyz.png',
+        title: '中路-Toyz',
+        content: '來自香港的選手，當時曾被台灣無數個網友以國籍的身分質疑過，身上所背負的壓力也比其他選手大。而Toyz也在比賽期間用實力證明自己。Toyz是一個不管在海內外都受到高度評價的玩家，在與NJS比賽時，用了奧莉安娜的R成功的阻止對手的攻勢，也被當時海外的賽評說過：「每個隊伍都有個keyman ，NJS是MakNooN，TPA就是Toyz。」'
+    },
+    {
+        src: './image/bebe.png',
+        title: '下路-Bebe',
+        content: 'Bebe曾在S2時期打到美服第二，是隊上實力最穩定的選手。雖然Bebe的KDA與表現可能沒有Toyz這麼的亮眼，但不難發現Bebe的走位相當的漂亮，而且他是個穩定中抓破綻的選手。與Bebe對線，稍微露出一點破綻會立刻被擊垮。'
+    },
+    {
+        src: './image/MiSTakE.png',
+        title: '輔助-Mistake',
+        content: '曾經是隊上的AD Carry，但在Bebe加入後轉為sup。比賽時期總是能快速判斷狀況，並發出讓人印象深刻的的嘶聲力竭的指揮，讓人看了十分熱血！也讓當時現場觀賽的老外從路人轉粉。'
+    }
+];
+
+    let currentIndex = 0;
+
+    function changePhoto(index) {
+        const mainPhoto = document.getElementById('main-photo');
+        const card = document.getElementById('card');
+
+        mainPhoto.style.opacity = 0;
+        mainPhoto.style.transform = 'translateX(100%)';
+        card.style.opacity = 0;
+        card.style.transform = 'translateX(100%)';
+
+        setTimeout(() => {
+            currentIndex = index;
+            mainPhoto.src = photos[index].src;
+            document.getElementById('card-title').innerText = photos[index].title;
+            document.getElementById('card-content').innerText = photos[index].content;
+
+            mainPhoto.style.opacity = 1;
+            mainPhoto.style.transform = 'translateX(0)';
+            card.style.opacity = 1;
+            card.style.transform = 'translateX(0)';
+        }, 1000);
+    }
+
+    function ChangeIndex(index){
+      currentIndex=index;
+      changePhoto(index);
+      
+    }
+    function autoChangePhoto() {
+        currentIndex = (currentIndex + 1) % photos.length;
+        changePhoto(currentIndex);
+    }
+
+    setInterval(autoChangePhoto, 5000);
+
+</script>
+</body>
+</html>
