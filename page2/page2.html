@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>page2</title>
+    <link rel="stylesheet" href="../index.css" />
+
+    <style>
+      
+  </style>
+
+  </head>
+
+
+  <body>
+
+    <!--標題-->
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../image/image.png" alt="tku">
+            </a>
+            <nav class="main-nav">
+                <a href="../page1/page1.html">未來走向</a>
+                <a href="../page2/page2.html">榮耀時光</a>
+                <a href="../page3/page3.html">史黑測試機</a>
+                <a href="../page4/page4.html">摸摸史丹利</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--內容-->
+
+    <img src="../image/tpa奪冠.jpg" class="win_image" onclick="" id="win_image">
+    <div class="time-elapsed"id="time-elapsed"></div>
+
+    <script>
+        function updateTimeElapsed() {
+            const startDate = new Date('2012-10-14T00:00:00');
+            const now = new Date();
+            const elapsed = now - startDate;
+            
+            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+            document.getElementById('time-elapsed').innerText = 
+                `奪冠至今已經過了 ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒\n我們來看胖叔叔可以吹多久`;
+        }
+
+        setInterval(updateTimeElapsed, 1000);
+    </script>
+
+    <!--內容-->
+
+    <div class="down">conpyright &copy; 台北暗殺對TPA</div>
+
+  </body>
+</html>
