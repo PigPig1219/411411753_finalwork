@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>page3</title>
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+
+  <body>
+
+    <!--標題-->
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../image/image.png" alt="tku">
+            </a>
+            <nav class="main-nav">
+                <a href="../page1/page1.html">未來走向</a>
+                <a href="../page2/page2.html">榮耀時光</a>
+                <a href="../page3/page3.html">史黑測試機</a>
+                <a href="../page4/page4.html">摸摸史丹利</a>
+            </nav>
+        </div>
+    </header>
+    <!--內容-->
+
+    <div class="quiz_container">
+        <h1>史黑測驗題</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. 聖主史丹利是甚麼物種?</p>
+                <label><input type="radio" name="q1" value="1"> 機器人</label><br>
+                <label><input type="radio" name="q1" value="0"> 神豬</label><br>
+                <label><input type="radio" name="q1" value="0"> 超硬fish</label>
+            </div>
+            
+            <div class="question">
+                <p>2. 史丹利上路對線爆了誰的鍋？</p>
+                <label><input type="radio" name="q2" value="0"> 對面上路只會吸奶</label><br>
+                <label><input type="radio" name="q2" value="1"> 就叔叔爛阿沒辦法</label><br>
+                <label><input type="radio" name="q2" value="0"> 對面角色康特我</label>
+            </div>
+            
+            <div class="question">
+                <p>3. 看到胖叔叔光速+50你的反應是?？</p>
+                <label><input type="radio" name="q3" value="0"> 下路送慢點好嗎?</label><br>
+                <label><input type="radio" name="q3" value="1"> S2冠軍變小丑</label><br>
+                <label><input type="radio" name="q3" value="0"> 一定是公安開演</label>
+            </div>
+            
+            <div class="question">
+                <p>4. 對於叔叔拿冠軍的反應是？</p>
+                <label><input type="radio" name="q4" value="0"> 那是他應得的</label><br>
+                <label><input type="radio" name="q4" value="1"> 笑死一個世界冠軍吹十年</label><br>
+                <label><input type="radio" name="q4" value="0"> 沒有tpa的合作是不會贏的!!!</label>
+            </div>
+            
+            <div class="question">
+                <p>5. 胖叔叔沒玩過哪一個套路？</p>
+                <label><input type="radio" name="q5" value="0"> 仙女護符易大師</label><br>
+                <label><input type="radio" name="q5" value="0"> 凱特琳打野</label><br>
+                <label><input type="radio" name="q5" value="1"> 妮可打野</label>
+            </div>      
+            
+            <button type="button" onclick="checkAnswers()">提交</button>
+        </form>
+
+        <div class="result" id="result"></div>
+
+        <audio id="successAudio" src="../audio/嘴爽沒.mp3" preload="auto"></audio>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            var score= document.getElementById('scroe');
+            var form = document.getElementById('quizForm');
+            var correctAnswers = 0;
+            var totalQuestions = 5;
+
+            for (var i = 1; i <= totalQuestions; i++) {
+                var answer = form['q' + i].value;
+                if (answer === '1') {
+                    correctAnswers++;
+                }
+            }
+
+            var result = document.getElementById('result');
+
+            if (correctAnswers >= 3) {
+                document.getElementById('successAudio').play();
+                result.textContent = '你得了 ' + correctAnswers + ' 分 史黑認證';
+            }else{
+                result.textContent = '你得了 ' + correctAnswers + ' 分 機器人認證';
+            }
+        }
+    </script>
+
+
+    <!--內容-->
+
+    <div class="down">conpyright &copy; 台北暗殺對TPA</div>
+
+  </body>
+</html>
