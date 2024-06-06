@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>page4</title>
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+
+  <body>
+
+    <!--標題-->
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../image/image.png" alt="tku">
+            </a>
+            <nav class="main-nav">
+                <a href="../page1/page1.html">未來走向</a>
+                <a href="../page2/page2.html">榮耀時光</a>
+                <a href="../page3/page3.html">史黑測試機</a>
+                <a href="../page4/page4.html">摸摸史丹利</a>
+            </nav>
+        </div>
+    </header>
+    <!--內容-->
+    <div class="touch_container">
+        <p>奶子觸摸數: <span id="clickCountA">0</span></p>
+        <p>臉龐觸摸數: <span id="clickCountB">0</span></p>
+        <p>肚子觸摸數: <span id="clickCountC">0</span></p>
+    </div>
+
+    <audio id="clickSound" src="../audio/哭阿.mp3"></audio>
+
+    <div class="image_stanley">
+        <img id="image" src="../image/touch_stanley.png">
+    </div>
+
+    <script>
+        let clickCountA = 0;
+        let clickCountB = 0;
+        let clickCountC = 0;
+        const image = document.getElementById('image');
+        const clickCountDisplayA = document.getElementById('clickCountA');
+        const clickCountDisplayB = document.getElementById('clickCountB');
+        const clickCountDisplayC = document.getElementById('clickCountC');
+        const clickSound = document.getElementById('clickSound');
+
+        function getClickRegion(x, y, img) {
+            const rect = img.getBoundingClientRect();
+            const relativeX = x - rect.left;
+            const relativeY = y - rect.top;
+            const width = rect.width;
+            const height = rect.height;
+
+            if (200<relativeX && relativeX<=650&&relativeY>=400&&relativeY<600) {
+                return 'A';
+            } else if (400<relativeX && relativeX<=650&&relativeY>=100&&relativeY<350) {
+                return 'B';
+            } else if (200<relativeX && relativeX<=650&&relativeY>=600) {
+                return 'C';
+            }
+        }
+
+        image.addEventListener('mousedown', () => {
+            image.classList.add('clicked');
+        });
+
+        image.addEventListener('mouseup', () => {
+            image.classList.remove('clicked');
+        });
+
+        image.addEventListener('click', (event) => {
+            const region = getClickRegion(event.clientX, event.clientY, image);
+            switch (region) {
+                case 'A':
+                    clickCountA++;
+                    clickCountDisplayA.textContent = clickCountA;
+                    clickSound.src="../audio/吸奶.mp3";
+                    clickSound.play();
+                    break;
+                case 'B':
+                    clickCountB++;
+                    clickCountDisplayB.textContent = clickCountB;
+                    clickSound.src="../audio/哭阿.mp3";
+                    clickSound.play();
+                    break;
+                case 'C':
+                    clickCountC++;
+                    clickCountDisplayC.textContent = clickCountC;
+                    clickSound.src="../audio/太無情了史丹利.mp3";
+                    clickSound.play();
+                    break;
+            }
+        });
+    </script>
+    <!--內容-->
+
+    <div class="down">conpyright &copy; 台北暗殺對TPA</div>
+
+  </body>
+</html>
