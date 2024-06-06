@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>page1</title>
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+
+  <body>
+    <!--標題-->
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../image/image.png" alt="tku">
+            </a>
+            <nav class="main-nav">
+                <a href="../page1/page1.html">未來走向</a>
+                <a href="../page2/page2.html">榮耀時光</a>
+                <a href="../page3/page3.html">史黑測試機</a>
+                <a href="../page4/page4.html">摸摸史丹利</a>
+            </nav>
+        </div>
+    </header>
+
+    <!--內容-->
+
+    <div class="future-content">
+      <div class="image-container">
+        <img src="../image/史丹利小丑.png" id="image" class="image">
+      </div>
+
+      <div class="future-card" id="card">
+        <h1 id="title">圖奇小丑- Stanley</h1>
+        <p id="content">現在的史丹利專心於開台，時不時會在實況分享當年TPA、HKA各種小故事與想法。而史丹利也不改過往的風格，時常分享自己獨特的出裝。但也因為這樣讓史丹利的評價非常兩極，有許多技術低的玩家看了史丹利的玩法後，效法史丹利，卻適得其反。讓史丹利也被一部分的網友表示都在亂教。</p>
+      </div>
+    </div>
+    
+    <h1 style="color: white; text-align: center;">你要看看誰的未來?</h1>
+    <div class="future-buttomset">
+      <button onclick="changefuture(0)" class="future-buttom">Stanley</button>
+      <button onclick="changefuture(1)" class="future-buttom">Lilballz</button>
+      <button onclick="changefuture(2)" class="future-buttom">Toyz</button>
+      <button onclick="changefuture(3)" class="future-buttom">Bebe</button>
+      <button onclick="changefuture(4)" class="future-buttom">MiSTakE</button>
+    </div>
+
+    <audio id="gobackAudio" src="../audio/goback.mp3" preload="auto"></audio>
+    
+    <script>
+      const photos = [
+        {
+            src: '../image/史丹利小丑.png',
+            title: '圖奇小丑- Stanley',
+            content: '現在的史丹利專心於開台，時不時會在實況分享當年TPA、HKA各種小故事與想法。而史丹利也不改過往的風格，時常分享自己獨特的出裝。但也因為這樣讓史丹利的評價非常兩極，有許多技術低的玩家看了史丹利的玩法後，效法史丹利，卻適得其反。讓史丹利也被一部分的網友表示都在亂教。'
+        },
+        {
+            src: '../image/伯茲打poe.jpg',
+            title: 'Poe大師-Lilballz',
+            content: '在奪冠後，發生了許多事情，例如曾經代打而被禁賽，同時也是TPA五人中最早選擇退役的。退役後曾擔任一陣子的賽評，直來直往的大砲型的評論評價兩極。現在的Lilballz也卸下了賽評的身分，成為魔競娛樂旗下的實況主之一。此外有件有趣的事情，Lilballz在POE找到了另一片天，生動實用的教學，讓他找到了另一群觀眾，也被許多人笑稱被英雄聯盟耽誤的POE玩家。'
+        },
+        {
+            src: '../image/超派.jpg',
+            title: '麻椅-Toyz',
+            content: '奪冠之後，與tpa資金問題上的問題而退出，toyz接著努力經營自家的產業以及在直播圈、影音有一定的熱度，但是後來爆出有疑似詐賭事件而被開庭，後又因為觸怒神罰而被抓到種植大麻，最近又因美食公道伯的節目被其他業主看不爽被賞了超派鐵拳，最近法庭又有開審預計未來會遣返香港'
+        },
+        {
+            src: '../image/bebefather.jpg',
+            title: '爸爸-Bebe',
+            content: '而比賽結束後，Bebe選擇留在TPA，並且保持在最好的狀態(這點Toyz的書中有提及)。經歷了四位隊友脫隊後，Bebe繼續帶領隊伍，把新生的TPA帶到最好。2014年再度拿下世界賽門票，也被許多媒體看好是非韓國隊伍中最強的，但很可惜的在小組賽以1勝5敗淡然收場... 2017年宣布退役，隔年宣布結婚，是五人中第一個結婚的，現在也是一個小孩的爸。Bebe現在也成為實況主，在他的台中給他建議有時會反被嘴，但被嘴過的網友一致好評，因為會學到更好的觀念。'
+        },
+        {
+            src: '../image/摸屎.jpg',
+            title: '摸使-Mistake',
+            content: '當年在比賽結束後，不知明原因而離開隊伍，創立了TPS。而在他的帶領下也有聲有色，讓還在與新隊友磨合的TPA有非常大的壓力，但好景不常，後續 Mistake也遇到了一些挑戰，失利的他在合約到期後選擇退役。退役後的他開始經營了實況台，2015年合資開了魔競娛樂，成為了全方面的藝能公司(包含了實況主的培訓、節目製作等...)。近期強勢回歸，又再度經營了自己的實況台，不過看的出來實力下滑不少。'
+        }
+      ];
+
+      const photoContainer = document.getElementById('image');
+      const titleContainer = document.getElementById('title');
+      const textContainer = document.getElementById('content');
+    
+      function changefuture(index) {
+        if(index==2)document.getElementById('gobackAudio').play();;
+        // 開始淡出效果
+        textContainer.style.opacity = 0;
+        titleContainer.style.opacity = 0;
+        photoContainer.style.opacity = 0;
+        textContainer.style.transform = "translateX(100%)";
+        titleContainer.style.transform = "translateX(100%)";
+        photoContainer.style.transform = "translateX(100%)";
+
+        // 使用 requestAnimationFrame 確保動畫效果的連續性
+        setTimeout(() => {
+          // 更新內容
+          textContainer.textContent = photos[index].content;
+          titleContainer.textContent = photos[index].title;
+          photoContainer.src = photos[index].src;
+
+          // 開始淡入效果
+          requestAnimationFrame(() => {
+            textContainer.style.opacity = 1;
+            titleContainer.style.opacity = 1;
+            photoContainer.style.opacity = 1;
+            textContainer.style.transform = "translateX(0%)";
+            titleContainer.style.transform = "translateX(0%)";
+            photoContainer.style.transform = "translateX(0%)";
+          });
+        }, 500); // 500毫秒的淡出時間
+      }
+    </script>
+
+    <!--內容-->
+    <div class="down">copyright &copy; 台北暗殺對TPA</div>
+  </body>
+</html>
